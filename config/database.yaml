@@ -1,0 +1,21 @@
+# MongoDB Database Configuration
+
+mongodb:
+  # Connection URI
+  # For local MongoDB: mongodb://localhost:27017
+  # For MongoDB Atlas: mongodb+srv://username:password@cluster.mongodb.net/
+  uri: "mongodb://localhost:27017"
+  
+  # Database name
+  database: "smart_parking"
+  
+  # Connection options
+  options:
+    maxPoolSize: 50
+    minPoolSize: 10
+    connectTimeoutMS: 5000
+    serverSelectionTimeoutMS: 5000
+  
+  # Authentication (if required)
+  # username: "admin"
+  # password: "password"

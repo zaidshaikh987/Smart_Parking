@@ -1,0 +1,40 @@
+# MQTT Broker Configuration
+
+mqtt:
+  # Broker connection
+  broker_host: "localhost"
+  broker_port: 1883
+  
+  # Authentication (set to null if not required)
+  username: null
+  password: null
+  
+  # Client settings
+  client_id_prefix: "smart_parking"
+  keepalive: 60
+  clean_session: true
+  
+  # Quality of Service (0, 1, or 2)
+  qos: 1
+  
+  # Topics
+  topics:
+    # Vision service publishes slot updates
+    slot_update: "parking/camera/{camera_id}/slot/{slot_id}"
+    
+    # Aggregator publishes global availability
+    global_status: "parking/global/any_slot"
+    
+    # Gate control commands
+    gate_control: "parking/gate/control"
+    
+    # RFID scan events
+    rfid_scan: "parking/rfid/scan"
+    
+    # System status
+    system_status: "parking/system/status"
+  
+  # Reconnection settings
+  reconnect:
+    max_attempts: 10
+    delay_seconds: 5

@@ -1,0 +1,7 @@
+# Aggregator Service Configuration
+mqtt:
+  broker_host: "localhost"
+  broker_port: 1883
+  qos: 1
+
+backend_url: "http://localhost:8000"

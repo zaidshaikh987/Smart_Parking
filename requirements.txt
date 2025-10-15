@@ -1,0 +1,17 @@
+# RFID Smart Parking System - Root Requirements
+# Install all dependencies for the complete system
+
+# Core dependencies
+pyyaml==6.0.1
+python-dateutil==2.8.2
+requests==2.31.0
+
+# For individual components, navigate to their directories and install:
+# cd backend && pip install -r requirements.txt
+# cd vision && pip install -r requirements.txt
+# cd aggregator && pip install -r requirements.txt
+
+# Quick install all (from project root):
+# pip install -r backend/requirements.txt
+# pip install -r vision/requirements.txt
+# pip install -r aggregator/requirements.txt

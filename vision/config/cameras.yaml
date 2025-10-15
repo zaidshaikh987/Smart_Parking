@@ -1,0 +1,102 @@
+# Camera and Parking Slot Configuration
+
+cameras:
+  - camera_id: "CAM_01"
+    name: "Front Parking Area"
+    # Stream URL - can be RTSP, HTTP, or local video file
+    # For ESP32-CAM: http://192.168.1.100:81/stream
+    # For RTSP: rtsp://192.168.1.100:554/stream
+    # For video file: /path/to/video.mp4
+    stream_url: 0  # Webcam for testing
+    
+    # Alternative: use video file for testing
+    # stream_url: "./test_videos/parking_sample.mp4"
+    
+    # Detection settings
+    detection_mode: "yolo"  # Options: "yolo" or "classical"
+    confidence_threshold: 0.5
+    overlap_threshold: 0.3
+    
+    # Frame processing
+    fps: 5  # Process 5 frames per second
+    frame_skip: 6  # Process every 6th frame (for 30fps source)
+    
+    # Parking slots for this camera
+    slots:
+      - slot_id: "SLOT_A1"
+        slot_name: "A1"
+        slot_type: "standard"
+        # Polygon coordinates [x, y] defining the parking space
+        polygon:
+          - [100, 200]
+          - [300, 200]
+          - [310, 400]
+          - [90, 400]
+      
+      - slot_id: "SLOT_A2"
+        slot_name: "A2"
+        slot_type: "standard"
+        polygon:
+          - [320, 200]
+          - [520, 200]
+          - [530, 400]
+          - [310, 400]
+      
+      - slot_id: "SLOT_A3"
+        slot_name: "A3"
+        slot_type: "compact"
+        polygon:
+          - [540, 200]
+          - [700, 200]
+          - [710, 400]
+          - [530, 400]
+  
+  - camera_id: "CAM_02"
+    name: "Rear Parking Area"
+    stream_url: 1  # Webcam for testing
+    detection_mode: "yolo"
+    confidence_threshold: 0.5
+    overlap_threshold: 0.3
+    fps: 5
+    frame_skip: 6
+    
+    slots:
+      - slot_id: "SLOT_B1"
+        slot_name: "B1"
+        slot_type: "standard"
+        polygon:
+          - [150, 250]
+          - [350, 250]
+          - [360, 450]
+          - [140, 450]
+      
+      - slot_id: "SLOT_B2"
+        slot_name: "B2"
+        slot_type: "disabled"
+        polygon:
+          - [370, 250]
+          - [570, 250]
+          - [580, 450]
+          - [360, 450]
+
+# Global vision settings
+vision_settings:
+  # Model path for YOLO
+  yolo_model: "../models/yolov8n.pt"  # Downloads automatically if not present
+  
+  # Classical detection settings
+  classical:
+    background_subtractor: "MOG2"  # Options: MOG2, KNN
+    history: 500
+    var_threshold: 16
+    detect_shadows: false
+    min_contour_area: 1000
+  
+  # Visualization
+  show_visualization: true
+  save_output: false
+  output_path: "./output/"
+  
+  # Performance
+  use_gpu: false  # Set to true if CUDA is available
+  thread_per_camera: true

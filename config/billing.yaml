@@ -1,0 +1,30 @@
+# Billing and Tariff Configuration
+
+billing:
+  # Base tariff per hour (in ₹)
+  tariff_per_hour: 10.0
+  
+  # Billing unit in minutes (parking time rounded to this unit)
+  # Example: 15 means billing in 15-minute blocks
+  billing_unit_minutes: 15
+  
+  # Minimum charge (in ₹)
+  min_charge: 10.0
+  
+  # Grace period in minutes (free parking time)
+  grace_period_minutes: 5
+  
+  # Maximum daily charge (null for no limit)
+  max_daily_charge: null
+  
+  # Peak hour pricing (optional - not yet implemented)
+  peak_hours:
+    enabled: false
+    start_hour: 8
+    end_hour: 20
+    multiplier: 1.5
+  
+  # Weekend pricing (optional - not yet implemented)
+  weekend_pricing:
+    enabled: false
+    multiplier: 0.8

@@ -1,0 +1,83 @@
+# Real Vision Service Configuration
+
+# YOLOv8 Model Path
+model_path: "yolov8n.pt"  # Will auto-download if not present
+
+# Cameras Configuration
+cameras:
+  - camera_id: "CAM_01"
+    source: "videos/parking_lot_1.mp4"  # Replace with your video file or camera URL (rtsp://...)
+    fps: 30
+    resolution: [1920, 1080]
+    
+    # Define parking slots with polygons
+    # Each slot is defined by 4 corner points [x, y]
+    slots:
+      - slot_id: "A1"
+        slot_name: "A1"
+        polygon: [[100, 300], [350, 300], [350, 500], [100, 500]]
+        slot_type: "standard"
+        
+      - slot_id: "A2"
+        slot_name: "A2"  
+        polygon: [[370, 300], [620, 300], [620, 500], [370, 500]]
+        slot_type: "standard"
+        
+      - slot_id: "A3"
+        slot_name: "A3"
+        polygon: [[640, 300], [890, 300], [890, 500], [640, 500]]
+        slot_type: "compact"
+        
+      - slot_id: "A4"
+        slot_name: "A4"
+        polygon: [[910, 300], [1160, 300], [1160, 500], [910, 500]]
+        slot_type: "standard"
+
+  - camera_id: "CAM_02"
+    source: "videos/parking_lot_2.mp4"  # Second camera
+    fps: 30
+    resolution: [1920, 1080]
+    
+    slots:
+      - slot_id: "B1"
+        slot_name: "B1"
+        polygon: [[100, 300], [350, 300], [350, 500], [100, 500]]
+        slot_type: "standard"
+        
+      - slot_id: "B2"
+        slot_name: "B2"
+        polygon: [[370, 300], [620, 300], [620, 500], [370, 500]]
+        slot_type: "disabled"
+        
+      - slot_id: "B3"
+        slot_name: "B3"
+        polygon: [[640, 300], [890, 300], [890, 500], [640, 500]]
+        slot_type: "standard"
+        
+      - slot_id: "B4"
+        slot_name: "B4"
+        polygon: [[910, 300], [1160, 300], [1160, 500], [910, 500]]
+        slot_type: "standard"
+
+# Detection Settings
+detection:
+  confidence_threshold: 0.5
+  nms_threshold: 0.4
+  classes: [2, 7]  # 2=car, 7=truck in COCO dataset
+  
+# Processing Settings
+processing:
+  frame_skip: 2  # Process every 2nd frame for performance
+  resize_width: 1280  # Resize frame width for faster processing
+  
+# MQTT Settings (Optional)
+mqtt:
+  enabled: true
+  broker: "localhost"
+  port: 1883
+  topic: "parking/slots/status"
+  
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/vision_service.log"

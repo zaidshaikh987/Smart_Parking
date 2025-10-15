@@ -1,0 +1,28 @@
+# Real Vision Service Requirements with YOLOv8
+
+# Core Computer Vision
+opencv-python==4.8.1.78
+opencv-contrib-python==4.8.1.78
+numpy==1.24.3
+
+# YOLOv8 and Deep Learning
+ultralytics==8.0.196
+torch==2.0.1
+torchvision==0.15.2
+Pillow==10.0.1
+
+# FastAPI and Server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Configuration
+pyyaml==6.0.1
+python-dotenv==1.0.0
+
+# MQTT (Optional)
+paho-mqtt==1.6.1
+
+# Utilities
+requests==2.31.0
+python-dateutil==2.8.2
